@@ -1,5 +1,5 @@
 ---
-import { ArrowRight, Globe2, Menu } from '@lucide/astro';
+import { Globe2, Menu } from '@lucide/astro';
 import { navigation, siteConfig } from '../data/site';
 ---
 
@@ -7,15 +7,7 @@ import { navigation, siteConfig } from '../data/site';
 	<div class="container-page flex h-16 items-center justify-between gap-4 lg:h-20 lg:gap-6">
 		<div class="flex min-w-0 items-center gap-2 sm:gap-4">
 			<a href="/" class="flex shrink-0 items-center" aria-label="Socialhub.AI home">
-				<img class="h-6 w-auto sm:h-8" src="/assets/logo-light.svg" alt={siteConfig.name} width="250" height="48" />
-			</a>
-			<a
-				class="inline-flex h-9 shrink-0 items-center gap-1.5 rounded-lg border border-[var(--color-border)] bg-white px-2 text-xs font-bold text-[var(--color-navy)] transition hover:border-[var(--color-green)] hover:text-[var(--color-green)] sm:h-10 sm:gap-2 sm:px-3 sm:text-sm lg:h-12 lg:px-5"
-				href="/zh/"
-				aria-label="Switch language to Simplified Chinese"
-			>
-				<Globe2 class="size-4" />
-				<span>简体中文</span>
+				<img class="h-8 w-[9.25rem] object-contain object-left lg:h-10 lg:w-[11.625rem]" src="/assets/socialhub-blue-font.png" alt={siteConfig.name} width="387" height="74" />
 			</a>
 		</div>
 
@@ -24,12 +16,28 @@ import { navigation, siteConfig } from '../data/site';
 		</nav>
 
 		<div class="hidden items-center gap-3 lg:flex">
+			<div class="group relative mr-5">
+				<button
+					class="grid size-11 place-items-center text-[#344054] transition hover:text-[var(--color-green)] focus:text-[var(--color-green)] focus:outline-none"
+					type="button"
+					aria-label="Select language"
+					aria-haspopup="true"
+				>
+					<Globe2 class="size-5" />
+				</button>
+				<div class="pointer-events-none absolute left-1/2 top-14 z-50 w-44 -translate-x-1/2 translate-y-1 rounded-xl border border-[var(--color-border)] bg-white p-2 text-sm font-semibold text-[#344054] opacity-0 shadow-[0_18px_48px_rgb(16_24_40_/_16%)] transition group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:opacity-100">
+					{siteConfig.languages.map((language) => (
+						<a class="block whitespace-nowrap rounded-md px-3 py-2.5 transition hover:bg-[var(--color-soft)] hover:text-[var(--color-green)]" href={language.href}>
+							{language.label}
+						</a>
+					))}
+				</div>
+			</div>
 			<a
 				class="inline-flex h-12 items-center gap-2 rounded-lg bg-[var(--color-green)] px-6 text-sm font-bold text-white transition hover:shadow-[0_10px_24px_rgb(0_174_93_/_24%)]"
 				href={siteConfig.cta.href}
 			>
-				{siteConfig.cta.label}
-				<ArrowRight class="size-4" />
+				Talk to Expert
 			</a>
 		</div>
 
@@ -40,12 +48,18 @@ import { navigation, siteConfig } from '../data/site';
 			<div class="absolute right-0 top-13 w-[min(84vw,320px)] rounded-lg border border-[var(--color-border)] bg-white p-3 shadow-[var(--shadow-soft)]">
 				<nav class="grid gap-1 text-sm font-semibold text-[#344054]" aria-label="Mobile navigation">
 					{navigation.map((item) => <a class="rounded-md px-3 py-3 transition hover:bg-[var(--color-soft)] hover:text-[var(--color-green)]" href={item.href}>{item.label}</a>)}
+					<div class="mt-2 border-t border-[var(--color-border)] pt-2">
+						{siteConfig.languages.map((language) => (
+							<a class="block rounded-md px-3 py-2.5 transition hover:bg-[var(--color-soft)] hover:text-[var(--color-green)]" href={language.href}>
+								{language.label}
+							</a>
+						))}
+					</div>
 					<a
 						class="mt-2 inline-flex h-11 items-center justify-center gap-2 rounded-md bg-[var(--color-green)] px-4 text-sm font-bold text-white transition hover:shadow-[0_10px_24px_rgb(0_174_93_/_24%)]"
 						href={siteConfig.cta.href}
 					>
-						{siteConfig.cta.label}
-						<ArrowRight class="size-4" />
+						Talk to Expert
 					</a>
 				</nav>
 			</div>

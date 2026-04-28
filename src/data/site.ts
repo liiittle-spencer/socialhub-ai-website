@@ -14,14 +14,15 @@ export const siteConfig = {
 	},
 	languages: [
 		{ label: 'English', code: 'en', href: '/' },
-		{ label: '简体中文', code: 'zh', href: '/zh/' },
+		{ label: 'Simplified Chinese', code: 'zh', href: '/zh/' },
+		{ label: 'Traditional Chinese', code: 'zh-hant', href: '/zh-hant/' },
 	],
 };
 
 export const navigation = [
-	{ label: 'Platform', href: '/platform/' },
-	{ label: 'Solutions', href: '/solutions/' },
-	{ label: 'Customers', href: '/customers/' },
+	{ label: 'Product', href: '/platform/' },
+	{ label: 'Industry', href: '/solutions/' },
+	{ label: 'Client', href: '/customers/' },
 	{ label: 'Blog', href: '/blog/' },
 	{ label: 'Company', href: '/about/' },
 ];
@@ -128,7 +129,6 @@ export const footerGroups = [
 			{ label: 'Customers', href: '/customers/' },
 			{ label: 'Blog', href: '/blog/' },
 			{ label: 'About', href: '/about/' },
-			{ label: 'Contact', href: '/contact/' },
 		],
 	},
 ];

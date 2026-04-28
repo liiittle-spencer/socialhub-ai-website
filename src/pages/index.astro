@@ -20,16 +20,20 @@ const customerStories = (await getCollection('customers'))
 	description="Unify customer data, uncover real-time insights, and automate personalized marketing, loyalty, and growth across every channel."
 >
 	<section class="navy-grid overflow-hidden py-12 text-white md:py-20">
-		<div class="container-page grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+		<div class="container-page grid gap-10 lg:grid-cols-[1fr_0.95fr] lg:items-center">
 			<div>
 				<p class="inline-flex rounded-full border border-white/16 bg-white/10 px-4 py-2 text-xs font-bold text-[var(--color-lime)]">
 					AI-native Customer Intelligence
 				</p>
-				<h1 class="mt-5 text-balance text-3xl font-black tracking-[0] sm:text-4xl md:text-5xl">
-					Customer intelligence for consumer brand growth.
+				<h1 class="mt-5 text-[clamp(1.9rem,7.5vw,3rem)] font-black leading-[1.04] tracking-[0] lg:text-5xl">
+					Customer<br />
+					Intelligence<br />
+					<span class="whitespace-nowrap">for <span class="inline-block text-[var(--color-lime)] will-change-transform" data-growth-word>Revenue</span> Growth.</span>
 				</h1>
 				<p class="mt-5 max-w-2xl text-base leading-7 text-white/72 md:text-lg">
-					Unify customer data, uncover real-time insights, and automate personalized marketing, loyalty, and growth across every channel.
+					Unify every customer.<br />
+					Activate every insight.<br />
+					Automate every moment of growth.
 				</p>
 				<div class="mt-7 flex flex-col gap-3 sm:flex-row">
 					<a
@@ -39,12 +43,6 @@ const customerStories = (await getCollection('customers'))
 						{siteConfig.cta.label}
 						<ArrowRight class="size-4" />
 					</a>
-					<a
-						class="inline-flex h-11 w-full items-center justify-center rounded-md border border-white/20 px-5 text-sm font-bold text-white transition hover:bg-white/10 sm:w-fit"
-						href="/platform/"
-					>
-						Explore Platform
-					</a>
 				</div>
 				<ul class="mt-7 grid gap-3 text-sm text-white/72 sm:grid-cols-3">
 					<li class="flex items-center gap-2"><CheckCircle2 class="size-4 text-[var(--color-lime)]" /> Real-time CDP</li>
@@ -52,7 +50,9 @@ const customerStories = (await getCollection('customers'))
 					<li class="flex items-center gap-2"><CheckCircle2 class="size-4 text-[var(--color-lime)]" /> Marketing automation</li>
 				</ul>
 			</div>
-			<ProductMockup />
+			<div class="lg:max-w-[620px] lg:justify-self-end xl:max-w-[660px]">
+				<ProductMockup />
+			</div>
 		</div>
 	</section>
 
@@ -143,3 +143,39 @@ const customerStories = (await getCollection('customers'))
 
 	<CTASection />
 </BaseLayout>
+
+<script is:inline>
+	const growthWords = ['Revenue', 'Repurchase', 'Loyalty', 'Brand', 'Customer'];
+	const growthWord = document.querySelector('[data-growth-word]');
+	let growthWordIndex = 0;
+
+	if (growthWord) {
+		const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+		window.setInterval(async () => {
+			growthWordIndex = (growthWordIndex + 1) % growthWords.length;
+
+			if (reduceMotion) {
+				growthWord.textContent = growthWords[growthWordIndex];
+				return;
+			}
+
+			await growthWord.animate(
+				[
+					{ opacity: 1, transform: 'translateY(0) scale(1)', filter: 'blur(0)' },
+					{ opacity: 0, transform: 'translateY(-0.35em) scale(0.98)', filter: 'blur(6px)' },
+				],
+				{ duration: 260, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' },
+			).finished;
+
+			growthWord.textContent = growthWords[growthWordIndex];
+			growthWord.animate(
+				[
+					{ opacity: 0, transform: 'translateY(0.35em) scale(0.98)', filter: 'blur(6px)' },
+					{ opacity: 1, transform: 'translateY(0) scale(1)', filter: 'blur(0)' },
+				],
+				{ duration: 320, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' },
+			);
+		}, 2400);
+	}
+</script>
