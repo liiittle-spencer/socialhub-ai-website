@@ -1,0 +1,36 @@
+---
+import { ArrowRight, Menu } from '@lucide/astro';
+import { navigation, siteConfig } from '../data/site';
+---
+
+<header class="sticky top-0 z-50 border-b border-[var(--color-border)] bg-white/92 backdrop-blur">
+	<div class="container-page flex h-18 items-center justify-between gap-6">
+		<a href="/" class="flex items-center gap-3" aria-label="Socialhub.AI home">
+			<span class="grid size-9 place-items-center rounded-md bg-[var(--color-navy)] text-sm font-black text-white">
+				SH
+			</span>
+			<span class="text-lg font-bold tracking-[0] text-[var(--color-navy)]">{siteConfig.name}</span>
+		</a>
+
+		<nav class="hidden items-center gap-7 text-sm font-semibold text-[#344054] lg:flex" aria-label="Primary navigation">
+			{navigation.map((item) => <a class="transition hover:text-[var(--color-green-dark)]" href={item.href}>{item.label}</a>)}
+		</nav>
+
+		<div class="hidden items-center gap-3 lg:flex">
+			<a class="text-sm font-semibold text-[#344054] transition hover:text-[var(--color-green-dark)]" href="/zh/">
+				中文
+			</a>
+			<a
+				class="inline-flex items-center gap-2 rounded-md bg-[var(--color-green)] px-4 py-2.5 text-sm font-bold text-white transition hover:bg-[var(--color-green-dark)]"
+				href={siteConfig.cta.href}
+			>
+				{siteConfig.cta.label}
+				<ArrowRight class="size-4" />
+			</a>
+		</div>
+
+		<button class="grid size-10 place-items-center rounded-md border border-[var(--color-border)] lg:hidden" aria-label="Open navigation">
+			<Menu class="size-5" />
+		</button>
+	</div>
+</header>

@@ -1,0 +1,113 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTASection from '../../components/CTASection.astro';
+import { contentSlug } from '../../data/routing';
+
+export async function getStaticPaths() {
+	const stories = (await getCollection('customers')).filter((story) => story.id.startsWith('en/'));
+	return stories.map((story) => ({
+		params: { slug: contentSlug(story.id) },
+		props: { story },
+	}));
+}
+
+const { story } = Astro.props;
+const { Content } = await render(story);
+---
+
+<BaseLayout
+	title={story.data.seoTitle || story.data.title}
+	description={story.data.seoDescription || story.data.summary}
+	canonical={`/customers/${contentSlug(story.id)}/`}
+>
+	<article>
+		<header class="bg-[var(--color-navy)] py-20 text-white">
+			<div class="container-page grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
+				<div>
+					<div class="grid h-16 w-fit min-w-44 place-items-center rounded-md bg-white px-5 text-lg font-black text-[var(--color-navy)]">
+						{story.data.logoText || story.data.customerName}
+					</div>
+					<p class="mt-6 text-sm font-bold uppercase tracking-[0.16em] text-[var(--color-lime)]">
+						{story.data.industry} / {story.data.region}
+					</p>
+					<h1 class="mt-4 text-balance text-4xl font-black tracking-[0] md:text-6xl">{story.data.title}</h1>
+				</div>
+				<p class="text-xl leading-8 text-white/72">{story.data.summary}</p>
+			</div>
+		</header>
+
+		{story.data.results.length > 0 && (
+			<section class="-mt-10 pb-12">
+				<div class="container-page grid gap-4 md:grid-cols-3">
+					{story.data.results.slice(0, 3).map((result) => (
+						<div class="surface-card rounded-lg p-6">
+							<p class="text-4xl font-black text-[var(--color-navy)]">{result.value}</p>
+							<p class="mt-2 text-sm leading-6 text-[var(--color-muted)]">{result.label}</p>
+						</div>
+					))}
+				</div>
+			</section>
+		)}
+
+		<section class="bg-white py-16">
+			<div class="container-page grid gap-10 lg:grid-cols-[0.7fr_1fr]">
+				<aside class="space-y-6">
+					{story.data.productsUsed.length > 0 && (
+						<div class="rounded-lg border border-[var(--color-border)] p-5">
+							<h2 class="text-sm font-bold uppercase tracking-[0.16em] text-[var(--color-green-dark)]">Products used</h2>
+							<div class="mt-4 flex flex-wrap gap-2">
+								{story.data.productsUsed.map((product) => (
+									<span class="rounded-full bg-[var(--color-mint)] px-3 py-1 text-xs font-bold text-[var(--color-green-dark)]">{product}</span>
+								))}
+							</div>
+						</div>
+					)}
+					{story.data.testimonial?.quote && (
+						<blockquote class="rounded-lg bg-[var(--color-soft)] p-6">
+							<p class="text-lg font-semibold leading-8 text-[var(--color-ink)]">"{story.data.testimonial.quote}"</p>
+							{story.data.testimonial.name && (
+								<footer class="mt-4 text-sm text-[var(--color-muted)]">
+									<strong class="text-[var(--color-ink)]">{story.data.testimonial.name}</strong>
+									{story.data.testimonial.title && <span>, {story.data.testimonial.title}</span>}
+								</footer>
+							)}
+						</blockquote>
+					)}
+				</aside>
+				<div>
+					<div class="grid gap-5 md:grid-cols-2">
+						{story.data.challenge && (
+							<section class="rounded-lg border border-[var(--color-border)] p-6">
+								<h2 class="text-xl font-bold tracking-[0]">Challenge</h2>
+								<p class="mt-3 text-sm leading-6 text-[var(--color-muted)]">{story.data.challenge}</p>
+							</section>
+						)}
+						{story.data.solution && (
+							<section class="rounded-lg border border-[var(--color-border)] p-6">
+								<h2 class="text-xl font-bold tracking-[0]">Solution</h2>
+								<p class="mt-3 text-sm leading-6 text-[var(--color-muted)]">{story.data.solution}</p>
+							</section>
+						)}
+					</div>
+
+					{story.data.sections.length > 0 && (
+						<div class="mt-8 space-y-8">
+							{story.data.sections.map((section) => (
+								<section>
+									<h2 class="text-2xl font-bold tracking-[0]">{section.heading}</h2>
+									<p class="mt-3 text-base leading-8 text-[var(--color-muted)]">{section.body}</p>
+								</section>
+							))}
+						</div>
+					)}
+
+					<div class="prose prose-lg prose-socialhub mt-10">
+						<Content />
+					</div>
+				</div>
+			</div>
+		</section>
+	</article>
+	<CTASection />
+</BaseLayout>

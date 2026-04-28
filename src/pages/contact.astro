@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import { siteConfig } from '../data/site';
+---
+
+<BaseLayout title="Book Demo" description="Request a Socialhub.AI demo for your team.">
+	<section class="bg-[var(--color-soft)] py-20">
+		<div class="container-page grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+			<div>
+				<SectionHeading
+					kicker="Book Demo"
+					title="Talk to us about your customer intelligence roadmap."
+					description="Share your company, contact details, and the customer growth workflows you want to improve."
+				/>
+				<div class="mt-8 rounded-lg border border-[var(--color-border)] bg-white p-5">
+					<p class="text-sm font-bold text-[var(--color-ink)]">Business email</p>
+					<a class="mt-2 inline-flex text-sm font-semibold text-[var(--color-green-dark)]" href={`mailto:${siteConfig.email}`}>
+						{siteConfig.email}
+					</a>
+				</div>
+			</div>
+			<ContactForm />
+		</div>
+	</section>
+</BaseLayout>

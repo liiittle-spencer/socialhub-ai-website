@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTASection from '../../components/CTASection.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import { industries } from '../../data/site';
+---
+
+<BaseLayout title="Solutions" description="Socialhub.AI solutions by industry and function.">
+	<section class="bg-[var(--color-soft)] py-20">
+		<div class="container-page">
+			<SectionHeading
+				kicker="Solutions"
+				title="Industry pages that scale as your content library grows."
+				description="Each solution page can be powered by CMS fields for use cases, related products, customer stories, and SEO."
+			/>
+			<div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+				{
+					industries.map((industry) => (
+						<a class="surface-card rounded-lg p-5 transition hover:-translate-y-1 hover:border-[var(--color-green)]" href={industry.href}>
+							<h2 class="text-lg font-bold tracking-[0]">{industry.title}</h2>
+							<p class="mt-3 text-sm leading-6 text-[var(--color-muted)]">{industry.description}</p>
+						</a>
+					))
+				}
+			</div>
+		</div>
+	</section>
+	<CTASection />
+</BaseLayout>

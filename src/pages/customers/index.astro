@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CustomerCard from '../../components/CustomerCard.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+
+const stories = (await getCollection('customers'))
+	.filter((story) => story.id.startsWith('en/'))
+	.sort((a, b) => Number(b.data.featured) - Number(a.data.featured));
+---
+
+<BaseLayout title="Customers" description="Customer stories from consumer brands using Socialhub.AI.">
+	<section class="bg-[var(--color-soft)] py-20">
+		<div class="container-page">
+			<SectionHeading
+				kicker="Customers"
+				title="Stories from brands building intelligence-led growth."
+				description="The listing reads structured CMS fields and can later support filters by industry, product, region, and featured status."
+			/>
+			<div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+				{stories.map((story) => <CustomerCard story={story} />)}
+			</div>
+		</div>
+	</section>
+</BaseLayout>

@@ -1,0 +1,49 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTASection from '../../components/CTASection.astro';
+import { contentSlug } from '../../data/routing';
+
+export async function getStaticPaths() {
+	const posts = (await getCollection('blog')).filter((post) => post.id.startsWith('en/'));
+	return posts.map((post) => ({
+		params: { slug: contentSlug(post.id) },
+		props: { post },
+	}));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const date = post.data.publishDate.toLocaleDateString('en', {
+	month: 'long',
+	day: 'numeric',
+	year: 'numeric',
+});
+---
+
+<BaseLayout
+	title={post.data.seoTitle || post.data.title}
+	description={post.data.seoDescription || post.data.description}
+	canonical={`/blog/${contentSlug(post.id)}/`}
+>
+	<article class="bg-white">
+		<header class="bg-[var(--color-soft)] py-20">
+			<div class="container-page max-w-4xl">
+				<p class="text-sm font-bold uppercase tracking-[0.16em] text-[var(--color-green-dark)]">{post.data.category}</p>
+				<h1 class="mt-4 text-balance text-4xl font-black tracking-[0] text-[var(--color-ink)] md:text-6xl">{post.data.title}</h1>
+				<p class="mt-6 text-xl leading-8 text-[var(--color-muted)]">{post.data.description}</p>
+				<div class="mt-6 flex flex-wrap gap-3 text-sm font-semibold text-[var(--color-muted)]">
+					<span>{post.data.author}</span>
+					<span>/</span>
+					<time datetime={post.data.publishDate.toISOString()}>{date}</time>
+				</div>
+			</div>
+		</header>
+		<div class="container-page py-14">
+			<div class="prose prose-lg prose-socialhub">
+				<Content />
+			</div>
+		</div>
+	</article>
+	<CTASection />
+</BaseLayout>

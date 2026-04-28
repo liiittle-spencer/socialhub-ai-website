@@ -1,0 +1,18 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#010630"/>
+  <path d="M0 0H1200V630H0V0Z" fill="url(#g)"/>
+  <rect x="82" y="82" width="1036" height="466" rx="24" fill="white" fill-opacity="0.08" stroke="white" stroke-opacity="0.18"/>
+  <text x="118" y="178" fill="#80CD27" font-family="Arial, sans-serif" font-size="30" font-weight="700" letter-spacing="4">SOCIALHUB.AI</text>
+  <text x="118" y="284" fill="white" font-family="Arial, sans-serif" font-size="74" font-weight="800">Customer Intelligence</text>
+  <text x="118" y="370" fill="white" font-family="Arial, sans-serif" font-size="74" font-weight="800">for Consumer Brands</text>
+  <text x="120" y="454" fill="#D7E7DF" font-family="Arial, sans-serif" font-size="30">Unify data. Understand customers. Activate growth.</text>
+  <circle cx="1010" cy="166" r="92" fill="#00AE5D" fill-opacity="0.75"/>
+  <circle cx="1030" cy="248" r="56" fill="#80CD27" fill-opacity="0.8"/>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00AE5D" stop-opacity="0.24"/>
+      <stop offset="0.44" stop-color="#010630" stop-opacity="0"/>
+      <stop offset="1" stop-color="#80CD27" stop-opacity="0.22"/>
+    </linearGradient>
+  </defs>
+</svg>

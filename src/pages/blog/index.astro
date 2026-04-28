@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+
+const posts = (await getCollection('blog'))
+	.filter((post) => post.id.startsWith('en/'))
+	.sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
+---
+
+<BaseLayout title="Blog" description="Ideas on customer intelligence, loyalty, marketing automation, and AI for consumer brands.">
+	<section class="bg-[var(--color-soft)] py-20">
+		<div class="container-page">
+			<SectionHeading
+				kicker="Resources"
+				title="Customer intelligence ideas for growth teams."
+				description="Weekly articles can be published from the CMS and automatically appear here, in RSS, and in the sitemap."
+			/>
+			<div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+				{posts.map((post) => <BlogCard post={post} />)}
+			</div>
+		</div>
+	</section>
+</BaseLayout>

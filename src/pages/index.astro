@@ -1,0 +1,145 @@
+---
+import { ArrowRight, CheckCircle2 } from '@lucide/astro';
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTASection from '../components/CTASection.astro';
+import CustomerCard from '../components/CustomerCard.astro';
+import LogoCloud from '../components/LogoCloud.astro';
+import ProductMockup from '../components/ProductMockup.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import { industries, platformModules, siteConfig, valueCards } from '../data/site';
+
+const customerStories = (await getCollection('customers'))
+	.filter((story) => story.id.startsWith('en/'))
+	.sort((a, b) => Number(b.data.featured) - Number(a.data.featured))
+	.slice(0, 3);
+---
+
+<BaseLayout
+	title="AI-native Customer Intelligence Platform for Consumer Brands"
+	description="Unify customer data, uncover real-time insights, and automate personalized marketing, loyalty, and growth across every channel."
+>
+	<section class="navy-grid overflow-hidden py-20 text-white md:py-28">
+		<div class="container-page grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+			<div>
+				<p class="inline-flex rounded-full border border-white/16 bg-white/10 px-4 py-2 text-sm font-bold text-[var(--color-lime)]">
+					AI-native Customer Intelligence
+				</p>
+				<h1 class="mt-6 text-balance text-5xl font-black tracking-[0] md:text-7xl">
+					Customer intelligence for consumer brand growth.
+				</h1>
+				<p class="mt-6 max-w-2xl text-lg leading-8 text-white/72 md:text-xl">
+					Unify customer data, uncover real-time insights, and automate personalized marketing, loyalty, and growth across every channel.
+				</p>
+				<div class="mt-8 flex flex-col gap-3 sm:flex-row">
+					<a
+						class="inline-flex items-center justify-center gap-2 rounded-md bg-[var(--color-green)] px-5 py-3 text-sm font-bold text-white transition hover:bg-[var(--color-green-dark)]"
+						href={siteConfig.cta.href}
+					>
+						{siteConfig.cta.label}
+						<ArrowRight class="size-4" />
+					</a>
+					<a
+						class="inline-flex items-center justify-center rounded-md border border-white/20 px-5 py-3 text-sm font-bold text-white transition hover:bg-white/10"
+						href="/platform/"
+					>
+						Explore Platform
+					</a>
+				</div>
+				<ul class="mt-8 grid gap-3 text-sm text-white/72 sm:grid-cols-3">
+					<li class="flex items-center gap-2"><CheckCircle2 class="size-4 text-[var(--color-lime)]" /> Real-time CDP</li>
+					<li class="flex items-center gap-2"><CheckCircle2 class="size-4 text-[var(--color-lime)]" /> Loyalty AI</li>
+					<li class="flex items-center gap-2"><CheckCircle2 class="size-4 text-[var(--color-lime)]" /> Marketing automation</li>
+				</ul>
+			</div>
+			<ProductMockup />
+		</div>
+	</section>
+
+	<LogoCloud />
+
+	<section class="bg-[var(--color-soft)] py-20">
+		<div class="container-page">
+			<SectionHeading
+				kicker="Why Socialhub.AI"
+				title="From scattered customer data to decisions teams can act on."
+				description="The platform is structured around the workflows consumer brands repeat every week: understand the customer, find the opportunity, and activate the next journey."
+			/>
+			<div class="mt-10 grid gap-5 md:grid-cols-3">
+				{
+					valueCards.map((card) => (
+						<div class="surface-card rounded-lg p-6">
+							<p class="text-sm font-bold uppercase tracking-[0.16em] text-[var(--color-green-dark)]">{card.kicker}</p>
+							<h2 class="mt-4 text-2xl font-bold tracking-[0]">{card.title}</h2>
+							<p class="mt-4 text-sm leading-6 text-[var(--color-muted)]">{card.description}</p>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="bg-white py-20">
+		<div class="container-page">
+			<div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+				<SectionHeading
+					kicker="Platform"
+					title="One intelligence layer for data, loyalty, marketing, and AI."
+					description="Keep the website maintainable by treating each capability as a reusable platform module. The same content can power homepage cards, product pages, and related CTAs."
+				/>
+				<div class="grid gap-4 sm:grid-cols-2">
+					{
+						platformModules.map((module) => (
+							<a class="surface-card rounded-lg p-5 transition hover:-translate-y-1 hover:border-[var(--color-green)]" href={module.href}>
+								<span class="rounded-full bg-[var(--color-mint)] px-3 py-1 text-xs font-bold text-[var(--color-green-dark)]">{module.tag}</span>
+								<h2 class="mt-4 text-xl font-bold tracking-[0]">{module.title}</h2>
+								<p class="mt-3 text-sm leading-6 text-[var(--color-muted)]">{module.description}</p>
+							</a>
+						))
+					}
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="bg-[var(--color-soft)] py-20">
+		<div class="container-page">
+			<SectionHeading
+				kicker="Solutions"
+				title="Built around consumer brand operating models."
+				description="Start with the strongest verticals, then add more industry pages through CMS content as the story and evidence base grows."
+			/>
+			<div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+				{
+					industries.map((industry) => (
+						<a class="surface-card rounded-lg p-5 transition hover:-translate-y-1 hover:border-[var(--color-green)]" href={industry.href}>
+							<h2 class="text-lg font-bold tracking-[0]">{industry.title}</h2>
+							<p class="mt-3 text-sm leading-6 text-[var(--color-muted)]">{industry.description}</p>
+						</a>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="bg-white py-20">
+		<div class="container-page">
+			<div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+				<SectionHeading
+					kicker="Customers"
+					title="Customer stories that adapt to the fields you fill."
+					description="Each story can show metrics, products used, challenge, solution, testimonial, and related content only when those fields exist."
+				/>
+				<a class="inline-flex items-center gap-2 text-sm font-bold text-[var(--color-green-dark)]" href="/customers/">
+					View all stories
+					<ArrowRight class="size-4" />
+				</a>
+			</div>
+			<div class="mt-10 grid gap-5 lg:grid-cols-3">
+				{customerStories.map((story) => <CustomerCard story={story} />)}
+			</div>
+		</div>
+	</section>
+
+	<CTASection />
+</BaseLayout>

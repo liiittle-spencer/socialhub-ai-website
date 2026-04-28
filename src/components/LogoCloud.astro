@@ -1,0 +1,20 @@
+---
+import { proofLogos } from '../data/site';
+---
+
+<section class="border-y border-[var(--color-border)] bg-white py-8">
+	<div class="container-page">
+		<p class="text-center text-sm font-semibold text-[var(--color-muted)]">
+			Trusted by consumer brands across retail, F&B, grocery, and hospitality
+		</p>
+		<div class="mt-6 grid grid-cols-2 gap-3 md:grid-cols-4">
+			{
+				proofLogos.map((logo) => (
+					<div class="grid h-16 place-items-center rounded-md border border-[var(--color-border)] bg-[var(--color-soft)] px-4 text-center text-sm font-bold text-[var(--color-navy)]">
+						{logo}
+					</div>
+				))
+			}
+		</div>
+	</div>
+</section>
