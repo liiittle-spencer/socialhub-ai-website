@@ -4,11 +4,10 @@ const year = new Date().getFullYear();
 ---
 
 <footer class="border-t border-[var(--color-border)] bg-[var(--color-navy)] text-white">
-	<div class="container-page grid gap-10 py-14 lg:grid-cols-[1.2fr_2fr]">
+	<div class="container-page grid gap-10 py-12 lg:grid-cols-[1.2fr_2fr] lg:py-14">
 		<div>
-			<a href="/" class="flex items-center gap-3" aria-label="Socialhub.AI home">
-				<span class="grid size-9 place-items-center rounded-md bg-white text-sm font-black text-[var(--color-navy)]">SH</span>
-				<span class="text-lg font-bold">{siteConfig.name}</span>
+			<a href="/" class="flex items-center" aria-label="Socialhub.AI home">
+				<img class="h-8 w-auto" src="/assets/logo-dark.svg" alt={siteConfig.name} width="250" height="48" />
 			</a>
 			<p class="mt-5 max-w-sm text-sm leading-6 text-white/68">
 				AI-native customer intelligence platform for consumer brands.

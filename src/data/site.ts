@@ -14,7 +14,7 @@ export const siteConfig = {
 	},
 	languages: [
 		{ label: 'English', code: 'en', href: '/' },
-		{ label: '中文', code: 'zh', href: '/zh/' },
+		{ label: '简体中文', code: 'zh', href: '/zh/' },
 	],
 };
 

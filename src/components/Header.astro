@@ -1,27 +1,31 @@
 ---
-import { ArrowRight, Menu } from '@lucide/astro';
+import { ArrowRight, Globe2, Menu } from '@lucide/astro';
 import { navigation, siteConfig } from '../data/site';
 ---
 
 <header class="sticky top-0 z-50 border-b border-[var(--color-border)] bg-white/92 backdrop-blur">
-	<div class="container-page flex h-18 items-center justify-between gap-6">
-		<a href="/" class="flex items-center gap-3" aria-label="Socialhub.AI home">
-			<span class="grid size-9 place-items-center rounded-md bg-[var(--color-navy)] text-sm font-black text-white">
-				SH
-			</span>
-			<span class="text-lg font-bold tracking-[0] text-[var(--color-navy)]">{siteConfig.name}</span>
-		</a>
+	<div class="container-page flex h-16 items-center justify-between gap-4 lg:h-20 lg:gap-6">
+		<div class="flex min-w-0 items-center gap-2 sm:gap-4">
+			<a href="/" class="flex shrink-0 items-center" aria-label="Socialhub.AI home">
+				<img class="h-6 w-auto sm:h-8" src="/assets/logo-light.svg" alt={siteConfig.name} width="250" height="48" />
+			</a>
+			<a
+				class="inline-flex h-9 shrink-0 items-center gap-1.5 rounded-lg border border-[var(--color-border)] bg-white px-2 text-xs font-bold text-[var(--color-navy)] transition hover:border-[var(--color-green)] hover:text-[var(--color-green)] sm:h-10 sm:gap-2 sm:px-3 sm:text-sm lg:h-12 lg:px-5"
+				href="/zh/"
+				aria-label="Switch language to Simplified Chinese"
+			>
+				<Globe2 class="size-4" />
+				<span>简体中文</span>
+			</a>
+		</div>
 
 		<nav class="hidden items-center gap-7 text-sm font-semibold text-[#344054] lg:flex" aria-label="Primary navigation">
-			{navigation.map((item) => <a class="transition hover:text-[var(--color-green-dark)]" href={item.href}>{item.label}</a>)}
+			{navigation.map((item) => <a class="transition hover:text-[var(--color-green)]" href={item.href}>{item.label}</a>)}
 		</nav>
 
 		<div class="hidden items-center gap-3 lg:flex">
-			<a class="text-sm font-semibold text-[#344054] transition hover:text-[var(--color-green-dark)]" href="/zh/">
-				中文
-			</a>
 			<a
-				class="inline-flex items-center gap-2 rounded-md bg-[var(--color-green)] px-4 py-2.5 text-sm font-bold text-white transition hover:bg-[var(--color-green-dark)]"
+				class="inline-flex h-12 items-center gap-2 rounded-lg bg-[var(--color-green)] px-6 text-sm font-bold text-white transition hover:shadow-[0_10px_24px_rgb(0_174_93_/_24%)]"
 				href={siteConfig.cta.href}
 			>
 				{siteConfig.cta.label}
@@ -29,8 +33,22 @@ import { navigation, siteConfig } from '../data/site';
 			</a>
 		</div>
 
-		<button class="grid size-10 place-items-center rounded-md border border-[var(--color-border)] lg:hidden" aria-label="Open navigation">
-			<Menu class="size-5" />
-		</button>
+		<details class="group relative lg:hidden">
+			<summary class="grid size-11 cursor-pointer list-none place-items-center rounded-md border border-[var(--color-border)] bg-white [&::-webkit-details-marker]:hidden" aria-label="Open navigation">
+				<Menu class="size-5" />
+			</summary>
+			<div class="absolute right-0 top-13 w-[min(84vw,320px)] rounded-lg border border-[var(--color-border)] bg-white p-3 shadow-[var(--shadow-soft)]">
+				<nav class="grid gap-1 text-sm font-semibold text-[#344054]" aria-label="Mobile navigation">
+					{navigation.map((item) => <a class="rounded-md px-3 py-3 transition hover:bg-[var(--color-soft)] hover:text-[var(--color-green)]" href={item.href}>{item.label}</a>)}
+					<a
+						class="mt-2 inline-flex h-11 items-center justify-center gap-2 rounded-md bg-[var(--color-green)] px-4 text-sm font-bold text-white transition hover:shadow-[0_10px_24px_rgb(0_174_93_/_24%)]"
+						href={siteConfig.cta.href}
+					>
+						{siteConfig.cta.label}
+						<ArrowRight class="size-4" />
+					</a>
+				</nav>
+			</div>
+		</details>
 	</div>
 </header>

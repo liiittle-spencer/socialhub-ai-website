@@ -4,7 +4,7 @@ import { siteConfig } from '../data/site';
 ---
 
 <form
-	class="surface-card grid gap-5 rounded-lg p-6"
+	class="surface-card grid gap-5 rounded-lg p-4 sm:p-6"
 	action={siteConfig.contact.formAction}
 	method="post"
 	enctype="text/plain"
@@ -33,7 +33,7 @@ import { siteConfig } from '../data/site';
 		<textarea class="field min-h-34 resize-y" id="message" name="Message" required></textarea>
 	</div>
 	<button
-		class="inline-flex w-fit items-center gap-2 rounded-md bg-[var(--color-green)] px-5 py-3 text-sm font-bold text-white transition hover:bg-[var(--color-green-dark)]"
+		class="inline-flex h-11 w-full items-center justify-center gap-2 rounded-md bg-[var(--color-green)] px-5 text-sm font-bold text-white transition hover:bg-[var(--color-green-dark)] sm:w-fit"
 		type="submit"
 	>
 		Submit request
