@@ -1,0 +1,28 @@
+---
+type Props = {
+	customerName: string;
+	logoText?: string;
+	class?: string;
+};
+
+const { customerName, logoText, class: className = '' } = Astro.props;
+const label = logoText || customerName;
+const key = label.toLowerCase();
+
+const logoMap: Record<string, string> = {
+	adidas: '/assets/brand-logos/adidas.svg',
+	defacto: '/assets/brand-logos/defacto.svg',
+	timberland: '/assets/brand-logos/timberland.svg',
+	'the north face': '/assets/brand-logos/tnf.svg',
+};
+
+const logoSrc = logoMap[key];
+---
+
+{
+	logoSrc ? (
+		<img class:list={['customer-logo', className]} src={logoSrc} alt={label} loading="lazy" />
+	) : (
+		<span class:list={['customer-logo-text', className]}>{label}</span>
+	)
+}

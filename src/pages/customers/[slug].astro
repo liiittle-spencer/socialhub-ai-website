@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CTASection from '../../components/CTASection.astro';
+import CustomerLogo from '../../components/CustomerLogo.astro';
 import { contentSlug } from '../../data/routing';
 
 export async function getStaticPaths() {
@@ -25,8 +26,12 @@ const { Content } = await render(story);
 		<header class="bg-[var(--color-navy)] py-20 text-white">
 			<div class="container-page grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
 				<div>
-					<div class="grid h-16 w-fit min-w-44 place-items-center rounded-md bg-white px-5 text-lg font-black text-[var(--color-navy)]">
-						{story.data.logoText || story.data.customerName}
+					<div class="flex h-16 w-fit min-w-44 items-center">
+						<CustomerLogo
+							customerName={story.data.customerName}
+							logoText={story.data.logoText}
+							class="customer-logo--light"
+						/>
 					</div>
 					<p class="mt-6 text-sm font-bold uppercase tracking-[0.16em] text-[var(--color-lime)]">
 						{story.data.industry} / {story.data.region}
