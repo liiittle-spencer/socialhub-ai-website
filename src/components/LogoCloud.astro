@@ -1,20 +1,30 @@
 ---
 import { proofLogos } from '../data/site';
+
+const logoLoop = [...proofLogos, ...proofLogos];
 ---
 
 <section class="border-y border-[var(--color-border)] bg-white py-8">
-	<div class="container-page">
+	<div>
 		<p class="text-center text-sm font-semibold text-[var(--color-muted)]">
-			Trusted by consumer brands across retail, F&B, grocery, and hospitality
+			Serving consumer brands across retail, F&B, grocery, apparel, and lifestyle
 		</p>
-		<div class="mt-6 grid grid-cols-2 gap-3 md:grid-cols-4">
+		<div class="logo-marquee mt-6" aria-label="Socialhub.AI customer brand logos">
+			<div class="logo-marquee-track">
 			{
-				proofLogos.map((logo) => (
-					<div class="grid h-16 place-items-center rounded-md border border-[var(--color-border)] bg-[var(--color-soft)] px-4 text-center text-sm font-bold text-[var(--color-navy)]">
-						{logo}
+				logoLoop.map((logo, index) => (
+					<div class="logo-marquee-card" aria-hidden={index >= proofLogos.length ? 'true' : undefined}>
+						{
+							'src' in logo && logo.src ? (
+								<img class="max-h-12 max-w-[10.5rem] object-contain" src={logo.src} alt={logo.label} loading="lazy" />
+							) : (
+								<span>{logo.label}</span>
+							)
+						}
 					</div>
 				))
 			}
+			</div>
 		</div>
 	</div>
 </section>

@@ -21,21 +21,19 @@ const customerStories = (await getCollection('customers'))
 >
 	<section class="navy-grid overflow-hidden py-12 text-white md:py-20">
 		<div class="container-page grid gap-10 lg:grid-cols-[1fr_0.95fr] lg:items-center">
-			<div>
-				<p class="inline-flex rounded-full border border-white/16 bg-white/10 px-4 py-2 text-xs font-bold text-[var(--color-lime)]">
-					AI-native Customer Intelligence
-				</p>
-				<h1 class="mt-5 text-[clamp(1.9rem,7.5vw,3rem)] font-black leading-[1.04] tracking-[0] lg:text-5xl">
+			<div class="text-center lg:text-left">
+				<h1 class="text-[clamp(1.75rem,7vw,3rem)] font-black leading-[1.04] tracking-[0] lg:text-5xl">
+					AI-Native<br />
 					Customer<br />
 					Intelligence<br />
 					<span class="whitespace-nowrap">for <span class="inline-block text-[var(--color-lime)] will-change-transform" data-growth-word>Revenue</span> Growth.</span>
 				</h1>
-				<p class="mt-5 max-w-2xl text-base leading-7 text-white/72 md:text-lg">
+				<p class="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/72 md:text-lg lg:mx-0">
 					Unify every customer.<br />
 					Activate every insight.<br />
 					Automate every moment of growth.
 				</p>
-				<div class="mt-7 flex flex-col gap-3 sm:flex-row">
+				<div class="mt-7 flex flex-col justify-center gap-3 sm:flex-row lg:justify-start">
 					<a
 						class="inline-flex h-11 w-full items-center justify-center gap-2 rounded-md bg-[var(--color-green)] px-5 text-sm font-bold text-white transition hover:bg-[var(--color-green-dark)] sm:w-fit"
 						href={siteConfig.cta.href}
@@ -44,13 +42,13 @@ const customerStories = (await getCollection('customers'))
 						<ArrowRight class="size-4" />
 					</a>
 				</div>
-				<ul class="mt-7 grid gap-3 text-sm text-white/72 sm:grid-cols-3">
-					<li class="flex items-center gap-2"><CheckCircle2 class="size-4 text-[var(--color-lime)]" /> Real-time CDP</li>
-					<li class="flex items-center gap-2"><CheckCircle2 class="size-4 text-[var(--color-lime)]" /> Loyalty AI</li>
-					<li class="flex items-center gap-2"><CheckCircle2 class="size-4 text-[var(--color-lime)]" /> Marketing automation</li>
+				<ul class="mt-7 flex flex-col items-center gap-3 text-sm font-bold text-white/82 lg:items-start">
+					<li class="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/16 bg-white/10 px-4 py-2 backdrop-blur"><CheckCircle2 class="size-4 shrink-0 text-[var(--color-lime)]" /> Loyalty CRM</li>
+					<li class="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/16 bg-white/10 px-4 py-2 backdrop-blur"><CheckCircle2 class="size-4 shrink-0 text-[var(--color-lime)]" /> Real-Time Data Fabric</li>
+					<li class="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/16 bg-white/10 px-4 py-2 backdrop-blur"><CheckCircle2 class="size-4 shrink-0 text-[var(--color-lime)]" /> Omni-channel Engagement</li>
 				</ul>
 			</div>
-			<div class="lg:max-w-[620px] lg:justify-self-end xl:max-w-[660px]">
+			<div class="hidden lg:block lg:max-w-[620px] lg:justify-self-end xl:max-w-[660px]">
 				<ProductMockup />
 			</div>
 		</div>

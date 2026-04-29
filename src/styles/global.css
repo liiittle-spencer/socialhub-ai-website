@@ -86,6 +86,67 @@ textarea {
 	background-size: 32px 32px;
 }
 
+.logo-marquee {
+	overflow: hidden;
+	-webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+	mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+}
+
+.logo-marquee-track {
+	display: flex;
+	width: max-content;
+	gap: 64px;
+	animation: logo-marquee 42s linear infinite;
+	will-change: transform;
+}
+
+.logo-marquee:hover .logo-marquee-track {
+	animation-play-state: paused;
+}
+
+.logo-marquee-card {
+	display: grid;
+	width: 170px;
+	height: 64px;
+	place-items: center;
+	padding: 0;
+	color: var(--color-navy);
+	font-size: 15px;
+	font-weight: 800;
+	text-align: center;
+	white-space: nowrap;
+}
+
+@keyframes logo-marquee {
+	to {
+		transform: translateX(calc(-50% - 32px));
+	}
+}
+
+@media (max-width: 767px) {
+	.logo-marquee-track {
+		gap: 40px;
+		animation-duration: 34s;
+	}
+
+	.logo-marquee-card {
+		width: 136px;
+		height: 56px;
+		font-size: 14px;
+	}
+
+	.logo-marquee-card img {
+		max-width: 8rem;
+		max-height: 2.5rem;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.logo-marquee-track {
+		animation: none;
+	}
+}
+
 .prose-socialhub {
 	--tw-prose-body: #344054;
 	--tw-prose-headings: #101828;

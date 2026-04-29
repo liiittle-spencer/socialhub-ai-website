@@ -29,32 +29,32 @@ export const navigation = [
 
 export const platformModules = [
 	{
-		title: 'Customer Intelligence Platform',
+		title: 'AI Advisor',
 		description:
-			'Unify customer profiles, transactions, loyalty behavior, and engagement signals into one intelligence layer.',
+			'Guide opportunity research, go-to-market planning, business growth, and loyalty strategy with one strategic intelligence layer.',
 		href: '/platform/',
-		tag: 'Platform',
+		tag: 'Strategy',
 	},
 	{
-		title: 'Real-time CDP',
+		title: 'AI Data Scientist',
 		description:
-			'Create actionable segments and customer 360 views that update as new signals arrive.',
+			'Unify enterprise data, standardize KPIs, and turn fragmented metrics into real-time, AI-interpreted business intelligence.',
 		href: '/platform/real-time-cdp/',
 		tag: 'Data',
 	},
 	{
-		title: 'Loyalty Management',
+		title: 'AI Marketing Master',
 		description:
-			'Design tiering, rewards, points, and member journeys around each customer relationship.',
-		href: '/platform/loyalty-management/',
-		tag: 'Retention',
+			'Generate audiences, marketing canvases, content templates, and campaign workflows from customer intelligence.',
+		href: '/platform/marketing-automation/',
+		tag: 'Activation',
 	},
 	{
-		title: 'Marketing Automation',
+		title: 'Hyper-personalized Loyalty',
 		description:
-			'Activate campaigns across lifecycle moments with AI-assisted recommendations and orchestration.',
-		href: '/platform/marketing-automation/',
-		tag: 'Growth',
+			'Analyze member behavior and trigger real-time, multi-channel loyalty actions based on preferences and value signals.',
+		href: '/platform/loyalty-management/',
+		tag: 'Loyalty',
 	},
 ];
 
@@ -62,45 +62,64 @@ export const industries = [
 	{
 		title: 'Fashion & Apparel',
 		href: '/solutions/fashion/',
-		description: 'Connect online, offline, membership, and merchandising signals for sharper growth decisions.',
+		description: 'Unify store, ecommerce, campaign, and loyalty data for brands with complex customer journeys.',
 	},
 	{
 		title: 'Supermarket & Grocery',
 		href: '/solutions/supermarket-grocery/',
-		description: 'Understand household behavior, basket patterns, promotions, and frequency drivers.',
+		description: 'Support massive product data, high concurrency, real-time pricing, and scalable CRM operations.',
 	},
 	{
 		title: 'Food & Beverage',
 		href: '/solutions/food-beverage/',
-		description: 'Turn ordering, loyalty, and visit behavior into personalized journeys and repeat visits.',
+		description: 'Connect ordering, WhatsApp service, membership, and omnichannel journeys for repeat visits.',
 	},
 	{
 		title: 'Hospitality',
 		href: '/solutions/hospitality/',
-		description: 'Unify guest preferences and engagement signals across properties, channels, and services.',
+		description: 'Standardize guest identity, service signals, and member engagement across locations and channels.',
 	},
 ];
 
-export const proofLogos = ['Adidas', 'The North Face', 'Timberland', 'DeFacto'];
+export const proofLogos = [
+	{ label: 'adidas', src: '/assets/brand-logos/Adidas_Logo_Alternative_0.svg' },
+	{ label: 'VANS', src: '/assets/brand-logos/Vans_idPRQzpTzD_0.svg' },
+	{ label: 'TNF', src: '/assets/brand-logos/The_North_Face®_idag8zcHyV_0.svg' },
+	{ label: 'Haagen-Dazs', src: '/assets/brand-logos/haagen-dazs.svg' },
+	{ label: 'MCD', src: "/assets/brand-logos/McDonald's_Symbol_0.svg" },
+	{ label: 'Swatch', src: '/assets/brand-logos/Swatch_idD4ahNHn1_1.svg' },
+	{ label: 'ASUS' },
+	{ label: 'Microsoft', src: '/assets/brand-logos/Microsoft_Logo_0.svg' },
+	{ label: 'SHK' },
+	{ label: 'HL' },
+	{ label: 'ABBOTT', src: '/assets/brand-logos/Abbott_Logo_0.svg' },
+	{ label: 'GM', src: '/assets/brand-logos/General_Motors_Logo_0.svg' },
+	{ label: 'DeFacto' },
+	{ label: 'kipling', src: '/assets/brand-logos/Kipling_iddh8ZBn90_1.svg' },
+	{ label: 'Dickies', src: '/assets/brand-logos/Dickies_idyep8kurc_1.svg' },
+	{ label: 'Timberland', src: '/assets/brand-logos/Timberland_idi5E8k4YG_0.svg' },
+	{ label: 'BIODERMA' },
+	{ label: 'P&G' },
+];
 
 export const valueCards = [
 	{
 		kicker: 'Unify',
-		title: 'Every customer signal',
+		title: 'AI-ready customer data',
 		description:
-			'Bring profile, purchase, loyalty, campaign, and service data into a single customer foundation.',
+			'Connect POS, ecommerce, CRM, loyalty, app, service, and third-party data into one AI-interpretable customer foundation.',
 	},
 	{
 		kicker: 'Understand',
-		title: 'Insights in real time',
+		title: 'Business clarity in real time',
 		description:
-			'Surface segments, trends, churn risks, and revenue opportunities without waiting on static reports.',
+			'Standardize revenue, conversion, retention, CAC, LTV, AOV, and other KPIs so leaders see one version of truth.',
 	},
 	{
 		kicker: 'Activate',
-		title: 'Personalized growth',
+		title: 'Multi-agent activation',
 		description:
-			'Trigger targeted campaigns, loyalty actions, and next-best recommendations across channels.',
+			'Let AI plan audiences, recommend actions, generate campaign content, and trigger loyalty workflows across channels.',
 	},
 ];
 
