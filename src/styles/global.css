@@ -95,8 +95,9 @@ textarea {
 .logo-marquee-track {
 	display: flex;
 	width: max-content;
-	gap: 64px;
-	animation: logo-marquee 42s linear infinite;
+	align-items: center;
+	gap: 88px;
+	animation: logo-marquee 54s linear infinite;
 	will-change: transform;
 }
 
@@ -105,10 +106,12 @@ textarea {
 }
 
 .logo-marquee-card {
-	display: grid;
-	width: 170px;
-	height: 64px;
-	place-items: center;
+	display: flex;
+	flex: 0 0 auto;
+	align-items: center;
+	justify-content: center;
+	min-width: 0;
+	height: 88px;
 	padding: 0;
 	color: var(--color-navy);
 	font-size: 15px;
@@ -117,27 +120,34 @@ textarea {
 	white-space: nowrap;
 }
 
+.logo-marquee-img {
+	display: block;
+	width: auto;
+	height: var(--logo-height, 42px);
+	max-width: var(--logo-max-width, 180px);
+	object-fit: contain;
+}
+
 @keyframes logo-marquee {
 	to {
-		transform: translateX(calc(-50% - 32px));
+		transform: translateX(calc(-50% - 44px));
 	}
 }
 
 @media (max-width: 767px) {
 	.logo-marquee-track {
-		gap: 40px;
-		animation-duration: 34s;
+		gap: 56px;
+		animation-duration: 44s;
 	}
 
 	.logo-marquee-card {
-		width: 136px;
-		height: 56px;
+		height: 72px;
 		font-size: 14px;
 	}
 
-	.logo-marquee-card img {
-		max-width: 8rem;
-		max-height: 2.5rem;
+	.logo-marquee-img {
+		height: calc(var(--logo-height, 42px) * 0.88);
+		max-width: calc(var(--logo-max-width, 180px) * 0.88);
 	}
 }
 

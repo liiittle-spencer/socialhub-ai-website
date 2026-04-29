@@ -2,6 +2,10 @@
 import { proofLogos } from '../data/site';
 
 const logoLoop = [...proofLogos, ...proofLogos];
+const logoVars = (logo: (typeof proofLogos)[number]) =>
+	'src' in logo && logo.src
+		? `--logo-height: ${logo.height ?? 42}px; --logo-max-width: ${logo.maxWidth ?? 168}px;`
+		: undefined;
 ---
 
 <section class="border-y border-[var(--color-border)] bg-white py-8">
@@ -13,10 +17,14 @@ const logoLoop = [...proofLogos, ...proofLogos];
 			<div class="logo-marquee-track">
 			{
 				logoLoop.map((logo, index) => (
-					<div class="logo-marquee-card" aria-hidden={index >= proofLogos.length ? 'true' : undefined}>
+					<div
+						class="logo-marquee-card"
+						style={logoVars(logo)}
+						aria-hidden={index >= proofLogos.length ? 'true' : undefined}
+					>
 						{
 							'src' in logo && logo.src ? (
-								<img class="max-h-12 max-w-[10.5rem] object-contain" src={logo.src} alt={logo.label} loading="lazy" />
+								<img class="logo-marquee-img" src={logo.src} alt={logo.label} loading="lazy" />
 							) : (
 								<span>{logo.label}</span>
 							)
