@@ -1,6 +1,7 @@
 ---
 import { ArrowRight } from '@lucide/astro';
 import { contentSlug } from '../data/routing';
+import CustomerLogo from './CustomerLogo.astro';
 
 type Props = {
 	story: {
@@ -23,8 +24,8 @@ const metrics = story.data.results?.slice(0, 2) ?? [];
 
 <article class="surface-card flex h-full flex-col rounded-lg p-5 sm:p-6">
 	<div class="flex items-center justify-between gap-4">
-		<div class="grid h-13 min-w-32 place-items-center rounded-md bg-[var(--color-soft)] px-4 text-sm font-black text-[var(--color-navy)]">
-			{story.data.logoText || story.data.customerName}
+		<div class="flex h-13 min-w-32 items-center">
+			<CustomerLogo customerName={story.data.customerName} logoText={story.data.logoText} />
 		</div>
 		<span class="rounded-full bg-[var(--color-mint)] px-3 py-1 text-xs font-bold text-[var(--color-green-dark)]">
 			{story.data.industry}
