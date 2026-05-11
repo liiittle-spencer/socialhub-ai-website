@@ -9,13 +9,13 @@ const stories = (await getCollection('customers'))
 	.sort((a, b) => Number(b.data.featured) - Number(a.data.featured));
 ---
 
-<BaseLayout title="Customers" description="Customer stories from consumer brands using Socialhub.AI.">
+<BaseLayout title="Clients" description="Client stories from consumer brands using Socialhub.AI.">
 	<section class="bg-[var(--color-soft)] py-20">
 		<div class="container-page">
 			<SectionHeading
-				kicker="Customers"
+				kicker="Clients"
 				title="Stories from brands building intelligence-led growth."
-				description="The listing reads structured CMS fields and can later support filters by industry, product, region, and featured status."
+				description="See how our clients unify customer data and turn real-time intelligence into action with Socialhub.AI."
 			/>
 			<div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
 				{stories.map((story) => <CustomerCard story={story} />)}
