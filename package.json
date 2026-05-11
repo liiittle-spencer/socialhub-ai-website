@@ -9,18 +9,12 @@
     "dev": "astro dev",
     "dev:cms": "ENABLE_KEYSTATIC=1 astro dev",
     "build": "ASTRO_TELEMETRY_DISABLED=1 astro build && pagefind --site dist",
-    "preview": "npm run build && wrangler dev",
-    "astro": "astro",
-    "deploy": "npm run build && wrangler deploy",
-    "cf-typegen": "wrangler types"
+    "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "12",
     "@astrojs/mdx": "^4.3.14",
     "@astrojs/rss": "^4.0.18",
     "@astrojs/sitemap": "^3.7.2",
-    "@keystatic/astro": "^5.0.6",
-    "@keystatic/core": "^0.5.50",
     "@lucide/astro": "^1.11.0",
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.2.4",
@@ -29,6 +23,7 @@
     "tailwindcss": "^4.2.4"
   },
   "devDependencies": {
-    "wrangler": "^4.86.0"
+    "@keystatic/astro": "^5.0.6",
+    "@keystatic/core": "^0.5.50"
   }
 }
