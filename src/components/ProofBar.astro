@@ -1,0 +1,14 @@
+---
+import { productProofPoints } from '../data/products';
+---
+
+<section class="bg-white py-10">
+	<div class="container-page grid gap-4 md:grid-cols-4">
+		{productProofPoints.map((point) => (
+			<div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-soft)] p-5">
+				<p class="text-3xl font-black text-[var(--color-navy)]">{point.value}</p>
+				<p class="mt-2 text-sm leading-6 text-[var(--color-muted)]">{point.label}</p>
+			</div>
+		))}
+	</div>
+</section>

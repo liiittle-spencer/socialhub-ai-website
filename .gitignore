@@ -23,6 +23,9 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
+# Qoder IDE generated files
+.qoder/
+
 # wrangler files
 .wrangler
 .dev.vars*

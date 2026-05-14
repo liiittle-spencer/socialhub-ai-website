@@ -1,0 +1,22 @@
+---
+import { socialhubModules } from '../data/products';
+
+const links = [{ label: 'Overview', href: '/product/socialhub-ai/' }, ...socialhubModules.map((module) => ({ label: module.shortTitle, href: module.href }))];
+const currentPath = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+---
+
+<nav class="border-b border-[var(--color-border)] bg-white" aria-label="Socialhub.AI product navigation">
+	<div class="container-page flex gap-2 overflow-x-auto py-3" data-product-subnav>
+		{links.map((link) => (
+			<a
+				class:list={[
+					'shrink-0 rounded-md px-3 py-2 text-sm font-bold transition',
+					currentPath === link.href ? 'bg-[var(--color-mint)] text-[var(--color-green-dark)]' : 'text-[#344054] hover:bg-[var(--color-soft)] hover:text-[var(--color-green-dark)]',
+				]}
+				href={link.href}
+			>
+				{link.label}
+			</a>
+		))}
+	</div>
+</nav>

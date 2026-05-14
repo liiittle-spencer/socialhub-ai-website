@@ -1,8 +1,14 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CTASection from '../../components/CTASection.astro';
 import SectionHeading from '../../components/SectionHeading.astro';
-import { industries } from '../../data/site';
+import { contentSlug } from '../../data/routing';
+
+const industries = (await getCollection('industries'))
+	.filter((industry) => industry.id.startsWith('en/'))
+	.filter((industry) => ['fashion-apparel', 'supermarket-grocery', 'food-beverage'].includes(industry.data.industry))
+	.sort((a, b) => a.data.title.localeCompare(b.data.title));
 ---
 
 <BaseLayout title="Solutions" description="Socialhub.AI solutions by industry and function.">
@@ -10,15 +16,16 @@ import { industries } from '../../data/site';
 		<div class="container-page">
 			<SectionHeading
 				kicker="Solutions"
-				title="Industry playbooks for customer intelligence operations."
-				description="Start with the sectors where Socialhub.AI already has proof: apparel, supermarket, restaurant, and multi-region hospitality operations."
+				title="Industry Playbooks For Real-Time Customer Intelligence"
+				description="Start with the sectors where Socialhub.AI has the clearest fit: fashion and apparel, supermarket and grocery, and food and beverage operations."
 			/>
-			<div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+			<div class="mt-10 grid gap-5 md:grid-cols-3">
 				{
 					industries.map((industry) => (
-						<a class="surface-card rounded-lg p-5 transition hover:-translate-y-1 hover:border-[var(--color-green)]" href={industry.href}>
-							<h2 class="text-lg font-bold tracking-[0]">{industry.title}</h2>
-							<p class="mt-3 text-sm leading-6 text-[var(--color-muted)]">{industry.description}</p>
+						<a class="surface-card rounded-lg p-5 transition hover:-translate-y-1 hover:border-[var(--color-green)]" href={`/solutions/${contentSlug(industry.id)}/`}>
+							<p class="text-xs font-bold uppercase tracking-[0.16em] text-[var(--color-green-dark)]">{industry.data.industry}</p>
+							<h2 class="mt-3 text-lg font-bold tracking-[0]">{industry.data.title}</h2>
+							<p class="mt-3 text-sm leading-6 text-[var(--color-muted)]">{industry.data.description}</p>
 						</a>
 					))
 				}

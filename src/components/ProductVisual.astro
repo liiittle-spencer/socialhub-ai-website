@@ -1,0 +1,32 @@
+---
+import { businessLoop } from '../data/products';
+
+type Props = {
+	variant?: 'loop' | 'module';
+	steps?: Array<[string, string]>;
+	title?: string;
+	description?: string;
+};
+
+const { variant = 'loop', steps = [], title = 'Signal to Revenue Loop', description = 'A simple view of how customer moments move through the platform.' } = Astro.props;
+const loopSteps = steps.length > 0 ? steps : businessLoop.map((item) => [item.step, item.title] as [string, string]);
+---
+
+<div class="surface-card rounded-lg p-5">
+	<div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-soft)] p-4">
+		<p class="text-xs font-bold uppercase tracking-[0.16em] text-[var(--color-green-dark)]">{variant === 'module' ? 'Product Loop' : 'Business Loop'}</p>
+		<h2 class="mt-2 text-xl font-bold tracking-[0] text-[var(--color-navy)]">{title}</h2>
+		<p class="mt-2 text-sm leading-6 text-[#344054]">{description}</p>
+	</div>
+	<div class="mt-4 grid gap-3">
+		{loopSteps.map(([step, stepDescription], index) => (
+			<div class="grid gap-3 rounded-md border border-[var(--color-border)] bg-white p-4 sm:grid-cols-[auto_1fr] sm:items-start">
+				<span class="grid size-9 place-items-center rounded-full bg-[var(--color-mint)] text-sm font-black text-[var(--color-green-dark)]">{index + 1}</span>
+				<div>
+					<h3 class="text-base font-bold tracking-[0] text-[var(--color-navy)]">{step}</h3>
+					<p class="mt-1 text-sm leading-6 text-[#344054]">{stepDescription}</p>
+				</div>
+			</div>
+		))}
+	</div>
+</div>

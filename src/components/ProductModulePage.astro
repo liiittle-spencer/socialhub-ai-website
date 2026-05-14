@@ -1,0 +1,116 @@
+---
+import { ArrowRight } from '@lucide/astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTASection from './CTASection.astro';
+import ProductSubnav from './ProductSubnav.astro';
+import ProductVisual from './ProductVisual.astro';
+import SectionHeading from './SectionHeading.astro';
+import { moduleLoops, productRoles, socialhubModules } from '../data/products';
+
+type ProductSlug = keyof typeof moduleLoops;
+type Props = {
+	slug: ProductSlug;
+};
+
+const { slug } = Astro.props;
+const copy = moduleLoops[slug];
+const product = socialhubModules.find((item) => item.slug === slug)!;
+const relatedProducts = productRoles.filter((item) => item.title !== product.title);
+---
+
+<BaseLayout title={product.title} description={copy.intro} canonical={product.href}>
+	<ProductSubnav />
+	<section class="bg-[var(--color-soft)] py-20">
+		<div class="container-page grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
+			<div>
+				<p class="text-xs font-bold uppercase tracking-[0.16em] text-[var(--color-green-dark)]">{product.kicker}</p>
+				<h1 class="mt-4 text-balance text-[clamp(2rem,6vw,3.5rem)] font-black leading-[1.06] tracking-[0] text-[var(--color-navy)]">{copy.hero}</h1>
+				<p class="mt-5 max-w-2xl text-lg leading-8 text-[#344054]">{copy.intro}</p>
+				<p class="mt-4 max-w-2xl text-base leading-7 text-[#344054]">{copy.scenario}</p>
+				<div class="mt-7 flex flex-col gap-3 sm:flex-row">
+					<a class="inline-flex h-11 items-center justify-center gap-2 rounded-md bg-[var(--color-green)] px-5 text-sm font-bold text-white" href="/contact/">
+						Book a Demo
+						<ArrowRight class="size-4" />
+					</a>
+					<a class="inline-flex h-11 items-center justify-center rounded-md border border-[var(--color-border)] bg-white px-5 text-sm font-bold text-[var(--color-navy)]" href="/product/socialhub-ai/">
+						Platform Overview
+					</a>
+				</div>
+			</div>
+			<ProductVisual variant="module" title={`${product.title} Loop`} description={`How ${product.title} moves customer context through the growth system.`} steps={copy.steps} />
+		</div>
+	</section>
+
+	<section class="bg-white py-16">
+		<div class="container-page">
+			<SectionHeading
+				kicker="How It Works"
+				title={`The ${product.title} Loop`}
+				description="Each step exists to move the customer closer to a measurable next action."
+			/>
+			<div class="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+				{copy.steps.map(([step, description]) => (
+					<div class="surface-card rounded-lg p-5">
+						<p class="text-xs font-bold uppercase tracking-[0.16em] text-[var(--color-green-dark)]">{step}</p>
+						<p class="mt-3 text-base font-semibold leading-7 text-[#344054]">{description}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="bg-[var(--color-soft)] py-16">
+		<div class="container-page grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+			<SectionHeading
+				kicker="Core Focus"
+				title="What The Product Needs To Do Well"
+				description="The page stays focused on the few capabilities that make the loop work."
+			/>
+			<div class="grid gap-4 md:grid-cols-3">
+				{copy.focus.map(([title, description]) => (
+					<div class="surface-card rounded-lg p-5">
+						<h3 class="text-xl font-bold tracking-[0] text-[var(--color-navy)]">{title}</h3>
+						<p class="mt-3 text-sm leading-6 text-[#344054]">{description}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="bg-white py-16">
+		<div class="container-page grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+			<SectionHeading
+				kicker="AI-Native Support"
+				title="AI Helps Decide The Next Move"
+				description="AI is framed around business judgment and execution, not a separate product checklist."
+			/>
+			<div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-soft)] p-6">
+				<p class="text-lg font-semibold leading-8 text-[#344054]">{copy.aiSupport}</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="bg-[var(--color-soft)] py-16">
+		<div class="container-page">
+			<SectionHeading
+				kicker="Connected Platform"
+				title="This Product Is One Part Of The Loop"
+				description="Move upstream to understand the customer, or downstream to activate the next action."
+			/>
+			<div class="mt-8 grid gap-4 md:grid-cols-2">
+				{relatedProducts.map((item) => (
+					<a class="surface-card rounded-lg p-5 transition hover:-translate-y-1 hover:border-[var(--color-green)]" href={item.href}>
+						<h3 class="text-xl font-bold tracking-[0] text-[var(--color-navy)]">{item.title}</h3>
+						<p class="mt-2 text-sm font-bold leading-6 text-[#344054]">{item.role}</p>
+						<span class="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[var(--color-green-dark)]">
+							Explore {item.title}
+							<ArrowRight class="size-4" />
+						</span>
+					</a>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<CTASection title={`See ${product.title} in the Full Customer Loop`} description="Bring one customer growth moment and we will show how the platform turns it into data, action, and measurable feedback." />
+</BaseLayout>

@@ -1,0 +1,79 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTASection from '../../components/CTASection.astro';
+import IndustryBrandShowcase from '../../components/IndustryBrandShowcase.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import { contentSlug } from '../../data/routing';
+import { industrySolutions } from '../../data/products';
+
+export async function getStaticPaths() {
+	const industries = (await getCollection('industries')).filter((industry) => industry.id.startsWith('en/'));
+	return industries.map((industry) => ({
+		params: { slug: contentSlug(industry.id) },
+		props: { industry },
+	}));
+}
+
+const { industry } = Astro.props;
+const { Content } = await render(industry);
+const hasIndustryShowcase = industry.data.industry in industrySolutions;
+---
+
+<BaseLayout
+	title={industry.data.seoTitle || industry.data.title}
+	description={industry.data.seoDescription || industry.data.description}
+	canonical={`/solutions/${contentSlug(industry.id)}/`}
+>
+	<article>
+		<section class="bg-[var(--color-soft)] py-20">
+			<div class="container-page">
+				<SectionHeading
+					kicker="Solutions"
+					title={industry.data.title}
+					description={industry.data.description}
+				/>
+				<div class="mt-8 flex flex-wrap gap-2">
+					<span class="rounded-full bg-white px-3 py-1 text-xs font-bold uppercase tracking-[0.12em] text-[var(--color-green-dark)]">
+						{industry.data.industry}
+					</span>
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-white py-16">
+			<div class="container-page grid gap-10 lg:grid-cols-[0.7fr_1fr]">
+				<aside class="space-y-6">
+					{industry.data.primaryUseCases.length > 0 && (
+						<section class="rounded-lg border border-[var(--color-border)] p-5">
+							<h2 class="text-sm font-bold uppercase tracking-[0.16em] text-[var(--color-green-dark)]">Primary use cases</h2>
+							<ul class="mt-4 space-y-3">
+								{industry.data.primaryUseCases.map((useCase) => (
+									<li class="text-sm leading-6 text-[var(--color-muted)]">{useCase}</li>
+								))}
+							</ul>
+						</section>
+					)}
+
+					{industry.data.relatedProducts.length > 0 && (
+						<section class="rounded-lg border border-[var(--color-border)] p-5">
+							<h2 class="text-sm font-bold uppercase tracking-[0.16em] text-[var(--color-green-dark)]">Related products</h2>
+							<div class="mt-4 flex flex-wrap gap-2">
+								{industry.data.relatedProducts.map((product) => (
+									<span class="rounded-full bg-[var(--color-mint)] px-3 py-1 text-xs font-bold text-[var(--color-green-dark)]">{product}</span>
+								))}
+							</div>
+						</section>
+					)}
+				</aside>
+
+				<div class="prose prose-lg prose-socialhub">
+					<Content />
+				</div>
+			</div>
+		</section>
+
+		{hasIndustryShowcase && <IndustryBrandShowcase industry={industry.data.industry as keyof typeof industrySolutions} />}
+	</article>
+	<CTASection />
+</BaseLayout>
