@@ -1,6 +1,7 @@
 ---
-import { Globe2, Menu } from '@lucide/astro';
-import { navigation, siteConfig } from '../data/site';
+import { ArrowRight, Globe2, Menu } from '@lucide/astro';
+import { navigation, navigationMenus, siteConfig } from '../data/site';
+import { productMenu } from '../data/products';
 ---
 
 <header class="sticky top-0 z-50 border-b border-[var(--color-border)] bg-white/92 backdrop-blur">
@@ -12,7 +13,100 @@ import { navigation, siteConfig } from '../data/site';
 		</div>
 
 		<nav class="hidden items-center gap-7 text-sm font-semibold text-[#344054] lg:flex" aria-label="Primary navigation">
-			{navigation.map((item) => <a class="transition hover:text-[var(--color-green)]" href={item.href}>{item.label}</a>)}
+			{
+				navigation.map((item) =>
+					item.label === 'Product' ? (
+						<div class="group">
+							<a class="inline-flex h-20 items-center gap-1 transition hover:text-[var(--color-green)] focus:text-[var(--color-green)] focus:outline-none" href={item.href}>
+								{item.label}
+							</a>
+							<div class="pointer-events-none absolute left-0 top-full z-50 w-full translate-y-2 border-y border-[var(--color-border)] bg-white opacity-0 shadow-[0_28px_70px_rgb(16_24_40_/_12%)] transition group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:opacity-100">
+								<div class="container-page grid gap-8 py-8 lg:grid-cols-[0.95fr_1.1fr_0.75fr]">
+									<div>
+										<p class="text-xs font-bold uppercase tracking-[0.16em] text-[var(--color-green-dark)]">Overview</p>
+										<div class="mt-4 grid gap-2">
+											{productMenu.platform.map((link) => (
+												<a class="rounded-lg p-3 transition hover:bg-[var(--color-soft)]" href={link.href}>
+													<h2 class="text-base font-bold tracking-[0] text-[var(--color-navy)]">{link.title}</h2>
+													<p class="mt-1 text-sm font-normal leading-5 text-[#344054]">{link.description}</p>
+												</a>
+											))}
+										</div>
+										<p class="mt-5 text-xs font-bold uppercase tracking-[0.16em] text-[var(--color-green-dark)]">Product Modules</p>
+										<div class="mt-4 grid gap-2">
+											{productMenu.modules.map((link) => (
+												<a class="rounded-lg p-3 transition hover:bg-[var(--color-soft)]" href={link.href}>
+													<h2 class="text-base font-bold tracking-[0] text-[var(--color-navy)]">{link.title}</h2>
+													<p class="mt-1 text-sm font-normal leading-5 text-[#344054]">{link.description}</p>
+												</a>
+											))}
+										</div>
+									</div>
+									<div>
+										<p class="text-xs font-bold uppercase tracking-[0.16em] text-[var(--color-green-dark)]">Featured Capabilities</p>
+										<div class="mt-4 grid gap-2">
+											{productMenu.capabilities.map((link) => (
+												<a class="rounded-lg p-3 transition hover:bg-[var(--color-soft)]" href={link.href}>
+													<h2 class="text-base font-bold tracking-[0] text-[var(--color-navy)]">{link.title}</h2>
+													<p class="mt-1 text-sm font-normal leading-5 text-[#344054]">{link.description}</p>
+												</a>
+											))}
+										</div>
+									</div>
+									<div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-soft)] p-5">
+										<p class="text-xs font-bold uppercase tracking-[0.16em] text-[var(--color-green-dark)]">How It Works</p>
+										<h2 class="mt-3 text-xl font-bold tracking-[0] text-[var(--color-navy)]">From Signal to Repeat Revenue</h2>
+										<p class="mt-3 text-sm font-normal leading-6 text-[#344054]">See how customer signals move through CDP, loyalty, automation, and feedback.</p>
+										<a class="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[var(--color-green-dark)]" href="/product/socialhub-ai/">
+											View Platform
+											<ArrowRight class="size-4" />
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					) : item.label in navigationMenus ? (
+						<div class="group">
+							<a class="inline-flex h-20 items-center transition hover:text-[var(--color-green)] focus:text-[var(--color-green)] focus:outline-none" href={item.href}>
+								{item.label}
+							</a>
+							<div class="pointer-events-none absolute left-0 top-full z-50 w-full translate-y-2 border-y border-[var(--color-border)] bg-white opacity-0 shadow-[0_28px_70px_rgb(16_24_40_/_12%)] transition group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:opacity-100">
+								<div class="container-page grid gap-8 py-8 lg:grid-cols-[0.95fr_1.1fr_0.75fr]">
+									<div>
+										<p class="text-xs font-bold uppercase tracking-[0.16em] text-[var(--color-green-dark)]">Overview</p>
+										<a class="mt-4 block rounded-lg p-3 transition hover:bg-[var(--color-soft)]" href={navigationMenus[item.label].overview.href}>
+											<h2 class="text-base font-bold tracking-[0] text-[var(--color-navy)]">{navigationMenus[item.label].overview.title}</h2>
+											<p class="mt-1 text-sm font-normal leading-5 text-[#344054]">{navigationMenus[item.label].overview.description}</p>
+										</a>
+									</div>
+									<div>
+										<p class="text-xs font-bold uppercase tracking-[0.16em] text-[var(--color-green-dark)]">Featured Links</p>
+										<div class="mt-4 grid gap-2">
+											{navigationMenus[item.label].links.map((link) => (
+												<a class="rounded-lg p-3 transition hover:bg-[var(--color-soft)]" href={link.href}>
+													<h2 class="text-base font-bold tracking-[0] text-[var(--color-navy)]">{link.title}</h2>
+													<p class="mt-1 text-sm font-normal leading-5 text-[#344054]">{link.description}</p>
+												</a>
+											))}
+										</div>
+									</div>
+									<div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-soft)] p-5">
+										<p class="text-xs font-bold uppercase tracking-[0.16em] text-[var(--color-green-dark)]">Next Step</p>
+										<h2 class="mt-3 text-xl font-bold tracking-[0] text-[var(--color-navy)]">{navigationMenus[item.label].cta.title}</h2>
+										<p class="mt-3 text-sm font-normal leading-6 text-[#344054]">{navigationMenus[item.label].cta.description}</p>
+										<a class="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[var(--color-green-dark)]" href={navigationMenus[item.label].cta.href}>
+											{navigationMenus[item.label].cta.label}
+											<ArrowRight class="size-4" />
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					) : (
+						<a class="transition hover:text-[var(--color-green)]" href={item.href}>{item.label}</a>
+					),
+				)
+			}
 		</nav>
 
 		<div class="hidden items-center gap-3 lg:flex">
@@ -48,6 +142,19 @@ import { navigation, siteConfig } from '../data/site';
 			<div class="absolute right-0 top-13 w-[min(84vw,320px)] rounded-lg border border-[var(--color-border)] bg-white p-3 shadow-[var(--shadow-soft)]">
 				<nav class="grid gap-1 text-sm font-semibold text-[#344054]" aria-label="Mobile navigation">
 					{navigation.map((item) => <a class="rounded-md px-3 py-3 transition hover:bg-[var(--color-soft)] hover:text-[var(--color-green)]" href={item.href}>{item.label}</a>)}
+					<div class="rounded-md bg-[var(--color-soft)] p-2">
+						<p class="px-3 py-2 text-xs font-bold uppercase tracking-[0.16em] text-[var(--color-green-dark)]">Product</p>
+						{productMenu.platform.map((link) => (
+							<a class="block rounded-md px-3 py-2 text-sm font-semibold transition hover:bg-white hover:text-[var(--color-green)]" href={link.href}>
+								{link.title}
+							</a>
+						))}
+						{productMenu.modules.map((link) => (
+							<a class="block rounded-md px-3 py-2 text-sm font-semibold transition hover:bg-white hover:text-[var(--color-green)]" href={link.href}>
+								{link.title}
+							</a>
+						))}
+					</div>
 					<div class="mt-2 border-t border-[var(--color-border)] pt-2">
 						{siteConfig.languages.map((language) => (
 							<a class="block rounded-md px-3 py-2.5 transition hover:bg-[var(--color-soft)] hover:text-[var(--color-green)]" href={language.href}>

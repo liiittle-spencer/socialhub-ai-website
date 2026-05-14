@@ -2,31 +2,50 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CTASection from '../components/CTASection.astro';
 import SectionHeading from '../components/SectionHeading.astro';
+import ProofBar from '../components/ProofBar.astro';
 ---
 
-<BaseLayout title="About" description="About Socialhub.AI.">
+<BaseLayout title="About" description="Socialhub.AI is a real-time customer intelligence platform for consumer brands.">
 	<section class="bg-[var(--color-soft)] py-20">
 		<div class="container-page">
 			<SectionHeading
 				kicker="Company"
-				title="AI-native intelligence for customer-driven enterprises."
-				description="Socialhub.AI helps enterprises unify data, multi-agent intelligence, and workflow execution so teams can transform fragmented customer signals into real-time decisions and actions."
+				title="A Real-Time Customer Intelligence Platform For Consumer Brands"
+				description="Socialhub.AI helps consumer brands turn customer data into real-time engagement and revenue actions through a native Real-Time CDP, Loyalty CRM, Marketing Automation, and AI execution loop."
 			/>
 			<div class="mt-10 grid gap-5 md:grid-cols-3">
 				<div class="surface-card rounded-lg p-6">
-					<p class="text-3xl font-black text-[var(--color-navy)]">25+</p>
-					<p class="mt-2 text-sm leading-6 text-[var(--color-muted)]">years of enterprise software, AI, cloud architecture, and global digital transformation experience across the founding team.</p>
+					<p class="text-3xl font-black text-[var(--color-navy)]">Seattle</p>
+					<p class="mt-2 text-sm leading-6 text-[var(--color-muted)]">Global headquarters in Seattle, WA, with teams supporting enterprise customer intelligence programs.</p>
 				</div>
 				<div class="surface-card rounded-lg p-6">
-					<p class="text-3xl font-black text-[var(--color-navy)]">100+</p>
-					<p class="mt-2 text-sm leading-6 text-[var(--color-muted)]">brands supported across retail, sportswear, beauty, F&B, electronics, luxury, and loyalty ecosystems.</p>
+					<p class="text-3xl font-black text-[var(--color-navy)]">3 regions</p>
+					<p class="mt-2 text-sm leading-6 text-[var(--color-muted)]">Regional operations across Asia, Europe, and North America for multi-market consumer brands.</p>
 				</div>
 				<div class="surface-card rounded-lg p-6">
-					<p class="text-3xl font-black text-[var(--color-navy)]">SOC 2</p>
-					<p class="mt-2 text-sm leading-6 text-[var(--color-muted)]">security and compliance posture aligned with global enterprise requirements, including GDPR and ISO references.</p>
+					<p class="text-3xl font-black text-[var(--color-navy)]">CIP</p>
+					<p class="mt-2 text-sm leading-6 text-[var(--color-muted)]">Customer Intelligence Platform focused on real-time decisions for customer engagement and actions.</p>
 				</div>
 			</div>
 		</div>
 	</section>
+
+	<section class="bg-white py-20">
+		<div class="container-page grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+			<div>
+				<p class="text-xs font-bold uppercase tracking-[0.16em] text-[var(--color-green-dark)]">What we build</p>
+				<h2 class="mt-3 text-3xl font-black tracking-[0] text-[var(--color-navy)] md:text-4xl">Product-led solutions for high-frequency consumer growth.</h2>
+			</div>
+			<div class="space-y-5 text-base leading-7 text-[var(--color-muted)]">
+				<p>
+					Socialhub.AI is not a traditional system integrator and not a single-purpose marketing tool. We build a product-led solution that unifies customer data, loyalty operations, marketing journeys, AI recommendations, and governed execution.
+				</p>
+				<p>
+					The platform is designed for industries where customer timing, repeat purchase, membership value, inventory, channels, and promotional ROI all matter at the same time: fashion, grocery, food and beverage, lifestyle, and other consumer businesses.
+				</p>
+			</div>
+		</div>
+	</section>
+	<ProofBar />
 	<CTASection />
 </BaseLayout>

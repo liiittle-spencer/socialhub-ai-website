@@ -20,7 +20,7 @@ export const siteConfig = {
 };
 
 export const navigation = [
-	{ label: 'Product', href: '/platform/' },
+	{ label: 'Product', href: '/product/' },
 	{ label: 'Industry', href: '/solutions/' },
 	{ label: 'Client', href: '/customers/' },
 	{ label: 'Blog', href: '/blog/' },
@@ -50,7 +50,7 @@ export const platformModules = [
 		tag: 'Activation',
 	},
 	{
-		title: 'Hyper-personalized Loyalty',
+		title: 'Hyper-Personalized Loyalty',
 		description:
 			'Analyze member behavior and trigger real-time, multi-channel loyalty actions based on preferences and value signals.',
 		href: '/platform/loyalty-management/',
@@ -106,19 +106,19 @@ export const proofLogos = [
 export const valueCards = [
 	{
 		kicker: 'Unify',
-		title: 'AI-ready customer data',
+		title: 'AI-Ready Customer Data',
 		description:
 			'Connect POS, ecommerce, CRM, loyalty, app, service, and third-party data into one AI-interpretable customer foundation.',
 	},
 	{
 		kicker: 'Understand',
-		title: 'Business clarity in real time',
+		title: 'Business Clarity In Real Time',
 		description:
 			'Standardize revenue, conversion, retention, CAC, LTV, AOV, and other KPIs so leaders see one version of truth.',
 	},
 	{
 		kicker: 'Activate',
-		title: 'Multi-agent activation',
+		title: 'Multi-Agent Activation',
 		description:
 			'Let AI plan audiences, recommend actions, generate campaign content, and trigger loyalty workflows across channels.',
 	},
@@ -126,12 +126,13 @@ export const valueCards = [
 
 export const footerGroups = [
 	{
-		title: 'Platform',
+		title: 'Product',
 		links: [
-			{ label: 'Overview', href: '/platform/' },
-			{ label: 'Real-time CDP', href: '/platform/real-time-cdp/' },
-			{ label: 'Loyalty Management', href: '/platform/loyalty-management/' },
-			{ label: 'Marketing Automation', href: '/platform/marketing-automation/' },
+			{ label: 'Product Overview', href: '/product/' },
+			{ label: 'Socialhub.AI', href: '/product/socialhub-ai/' },
+			{ label: 'Real-Time CDP', href: '/product/socialhub-ai/real-time-cdp/' },
+			{ label: 'Loyalty CRM', href: '/product/socialhub-ai/loyalty-crm/' },
+			{ label: 'Marketing Automation', href: '/product/socialhub-ai/marketing-automation/' },
 		],
 	},
 	{
@@ -140,7 +141,6 @@ export const footerGroups = [
 			{ label: 'Fashion & Apparel', href: '/solutions/fashion/' },
 			{ label: 'Food & Beverage', href: '/solutions/food-beverage/' },
 			{ label: 'Supermarket & Grocery', href: '/solutions/supermarket-grocery/' },
-			{ label: 'Hospitality', href: '/solutions/hospitality/' },
 		],
 	},
 	{
@@ -152,3 +152,121 @@ export const footerGroups = [
 		],
 	},
 ];
+
+export const navigationMenus = {
+	Industry: {
+		overview: {
+			title: 'Industry Solutions',
+			description: 'See how Socialhub.AI adapts the customer growth loop for consumer verticals.',
+			href: '/solutions/',
+		},
+		links: [
+			{
+				title: 'Fashion & Apparel',
+				description: 'Connect member identity, loyalty, commerce data, and campaign moments.',
+				href: '/solutions/fashion/',
+			},
+			{
+				title: 'Supermarket & Grocery',
+				description: 'Support high-frequency transactions, points, coupons, and store-level activation.',
+				href: '/solutions/supermarket-grocery/',
+			},
+			{
+				title: 'Food & Beverage',
+				description: 'Turn ordering, vouchers, stores, and service signals into repeat visits.',
+				href: '/solutions/food-beverage/',
+			},
+		],
+		cta: {
+			title: 'Built For Repeat Purchase',
+			description: 'Start with the industries where customer timing, membership, and promotion ROI matter most.',
+			href: '/solutions/',
+			label: 'View Industries',
+		},
+	},
+	Client: {
+		overview: {
+			title: 'Customer Stories',
+			description: 'Review examples from brands building intelligence-led growth.',
+			href: '/customers/',
+		},
+		links: [
+			{
+				title: 'Fashion And Apparel',
+				description: 'Member identity, tier value, segmentation, and campaign activation.',
+				href: '/customers/',
+			},
+			{
+				title: 'Grocery And Retail',
+				description: 'Points, coupons, inventory-aware activation, and lower-cost engagement.',
+				href: '/customers/',
+			},
+			{
+				title: 'Food And Beverage',
+				description: 'Voucher operations, omnichannel membership, and repeat-visit journeys.',
+				href: '/customers/',
+			},
+		],
+		cta: {
+			title: 'Proof Before Scale',
+			description: 'Use customer stories to understand the patterns before choosing a pilot scenario.',
+			href: '/customers/',
+			label: 'View Customers',
+		},
+	},
+	Blog: {
+		overview: {
+			title: 'Insights',
+			description: 'Read practical thinking on customer data, loyalty, and AI-native growth operations.',
+			href: '/blog/',
+		},
+		links: [
+			{
+				title: 'Customer Intelligence',
+				description: 'How brands turn customer signals into operating decisions.',
+				href: '/blog/customer-intelligence-for-consumer-brands/',
+			},
+			{
+				title: 'Restaurant Customer Data',
+				description: 'How F&B teams use data for repeat visits and service context.',
+				href: '/blog/restaurant-customer-data/',
+			},
+			{
+				title: 'Loyalty Operating Model',
+				description: 'How AI changes loyalty beyond points and tiers.',
+				href: '/blog/loyalty-ai-operating-model/',
+			},
+		],
+		cta: {
+			title: 'Think In Loops',
+			description: 'The blog is where we explain the operating model behind the product pages.',
+			href: '/blog/',
+			label: 'Read Blog',
+		},
+	},
+	Company: {
+		overview: {
+			title: 'About Socialhub.AI',
+			description: 'Learn how the company builds product-led customer intelligence solutions.',
+			href: '/about/',
+		},
+		links: [
+			{
+				title: 'Company Overview',
+				description: 'Seattle HQ, regional operations, and the Customer Intelligence Platform story.',
+				href: '/about/',
+			},
+			{
+				title: 'Contact',
+				description: 'Bring one customer growth moment and talk to a product expert.',
+				href: '/contact/',
+			},
+		],
+		cta: {
+			title: 'Talk To The Team',
+			description: 'Share your current stack, customer channels, and first use case.',
+			href: '/contact/',
+			label: 'Contact Us',
+		},
+	},
+};
