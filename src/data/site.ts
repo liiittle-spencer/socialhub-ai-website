@@ -88,6 +88,7 @@ export const proofLogos = [
 	{ label: 'Haagen-Dazs', src: '/assets/brand-logos/haagen-dazs.svg', height: 62, maxWidth: 148 },
 	{ label: 'MCD', src: '/assets/brand-logos/mcd.svg' },
 	{ label: 'Swatch', src: '/assets/brand-logos/swatch.svg' },
+	{ label: 'YATA', src: '/assets/brand-logos/yata.png', height: 48, maxWidth: 72 },
 	{ label: 'ASUS', src: '/assets/brand-logos/ASUS.svg', height: 34, maxWidth: 180 },
 	{ label: 'Microsoft', src: '/assets/brand-logos/microsoft.svg' },
 	{ label: 'SHK', src: '/assets/brand-logos/shk.svg' },
